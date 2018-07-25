@@ -1,0 +1,238 @@
+###########
+# Ansible #
+###########
+
+*.retry
+
+##########
+# Elixir #
+##########
+
+/_build
+/cover
+/deps
+erl_crash.dump
+*.ez
+*.beam
+
+#######
+# Git #
+#######
+
+git_stats
+
+##############
+# JavaScript #
+##############
+
+node_modules
+
+#########
+# Linux #
+#########
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
+
+#########
+# MacOS #
+#########
+
+.DS_Store
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+########
+# Ruby #
+########
+
+*.gem
+*.rbc
+.rvmrc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+
+## Specific to Middleman:
+/.cache
+/build
+
+## Specific to RubyMotion:
+.dat*
+.repl_history
+build/
+*.bridgesupport
+build-iPhoneOS/
+build-iPhoneSimulator/
+
+## Documentation cache and generated files:
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+
+## Environment normalization:
+/.bundle/
+/vendor/bundle
+/lib/bundler/man/
+
+#################
+# Ruby on Rails #
+#################
+
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/assets
+/public/ckeditor_assets
+/public/uploads
+/public/system
+/public/sitemap.xml.gz
+/coverage/
+/spec/tmp
+**.orig
+*.pid
+rerun.txt
+pickle-email-*.html
+
+# if using bower-rails ignore default bower_components path bower.json files
+/vendor/assets/bower_components
+
+# Ignore pow environment settings
+.powenv
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Webpacker
+/public/packs
+
+#############
+# SASS/SCSS #
+#############
+
+.sass-cache/
+
+################
+# Sublime Text #
+################
+
+# cache files for sublime text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+
+# workspace files are user-specific
+*.sublime-workspace
+
+# project files should be checked into the repository, unless a significant
+# proportion of contributors will probably not be using SublimeText
+# *.sublime-project
+
+# sftp configuration file
+sftp-config.json
+
+# Package control specific files
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.cache/
+Package Control.ca-certs/
+bh_unicode_properties.cache
+
+# Sublime-github package stores a github token in this file
+# https://packagecontrol.io/packages/sublime-github
+GitHub.sublime-settings
+
+###########
+# Vagrant #
+###########
+
+.vagrant/
+.ansible/
+
+#######
+# Vim #
+#######
+
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+tags.*
+
+#########
+# Xcode #
+#########
+
+## Build generated
+# build/
+DerivedData/
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+###########
+# Project #
+###########
+
+# Enter gitignore rules for this project here
