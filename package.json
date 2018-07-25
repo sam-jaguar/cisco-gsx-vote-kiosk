@@ -1,0 +1,19 @@
+{
+  "name": "cisco-gsx-vote-kiosk",
+  "version": "1.0.0",
+  "description": "Cisco GSX For Good vote kiosk",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "sam-jaguar",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^2.0.5",
+    "electron-rebuild": "^1.8.1"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "nfc-pcsc": "^0.6.2"
+  }
+}
