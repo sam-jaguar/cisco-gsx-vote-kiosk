@@ -66,6 +66,7 @@ nfc.on('reader', reader => {
 
     } catch (err) {
       console.error("error reading data", err);
+      win.webContents.send('badge-error', {body: "badge read error", status: "internal"})
     }
   });
 
@@ -110,7 +111,7 @@ var sendRequest = function(badgeid){
       if(res.statusCode == 200 || res.statusCode == 409){
         win.webContents.send('badge-success', {body: body, status: res.statusCode});
       }else{
-        win.webContents.send('badge-error', {body: body, status: res.statusCode})
+        win.webContents.send('badge-error', {body: body, status: res.statusCode});
       }
       console.log('Body: ' + body);
     });

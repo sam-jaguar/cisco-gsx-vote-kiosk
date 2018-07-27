@@ -4,17 +4,6 @@ $(document).on('keydown', function( event ) {
   if ( event.which == 192 ) {
      $("#menu").toggleClass("slid");
   }
-
-  if ( event.which == 84 ) {
-     $(".card").toggleClass("hidden");
-     setTimeout(function () {
-      $(".success-card").toggleClass("hidden");
-      $(".card").toggleClass("hidden");
-      setTimeout(function () {
-       $(".success-card").toggleClass("hidden");
-      }, 4000);
-     }, 2000);
-  }
 });
 
 $("#requestUrl").on('change input', function(){
