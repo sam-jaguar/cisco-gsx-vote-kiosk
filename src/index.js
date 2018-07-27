@@ -25,6 +25,10 @@ $("#requestPort").on('change input', function(){
   ipcRenderer.send('updatePort', $(this).val());
 });
 
+$("#candidateid").on('change input', function(){
+  ipcRenderer.send('updateCandidateId', $(this).val());
+});
+
 ipcRenderer.on('badge-loading', function(event, data){
   console.log("recieved badge-loading: "+data);
   $(".main-card").addClass("hidden");

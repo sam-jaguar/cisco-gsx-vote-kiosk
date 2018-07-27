@@ -6,6 +6,7 @@ var http = require("http");
 let win;
 var url = "";
 var port = 80;
+var candidateId = "";
 const nfc = new NFC();
 
 function createWindow () {
@@ -33,6 +34,9 @@ ipcMain.on('updateUrl', (event, arg) => {
 });
 ipcMain.on('updatePort', (event, arg) => {
     port = arg;
+});
+ipcMain.on('updateCandidateId', (event, arg) => {
+    candidateId = arg;
 });
 
 
@@ -91,7 +95,7 @@ var sendRequest = function(badgeid){
   var options = {
     hostname: url,
     port: port,
-    path: '/vote?badge_id='+badgeid,
+    path: "/vote/"+candidateId+"?badge_id="+badgeid,
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
