@@ -118,7 +118,7 @@ var sendRequest = function(badgeid){
   });
   req.on('error', function(e) {
     console.log('problem with request: ' + e.message);
-    win.webContents.send('badge-error', {body: body, status: res.statusCode});
+    win.webContents.send('badge-error', {body: e.message, status: res.statusCode});
   });
   req.end();
 }
