@@ -84,6 +84,8 @@ h1{
 
 label {
   padding: 0.5em;
+  color: white;
+  margin-bottom: 0.5em;
 }
 
 input {
