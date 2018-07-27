@@ -79,7 +79,7 @@ h1{
 }
 
 .slid {
-  transform: translateY(75px);
+  transform: translateY(100%);
 }
 
 label {
