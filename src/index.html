@@ -8,17 +8,26 @@
     <div id="menu" class="slid">
       <label>request url:</label>
       <input id="requestUrl" />
+      <label>request port:</label>
+      <input id="requestPort" />
     </div>
-    <div class="flipper">
-      <div class="front">
-        <img id="check" class="hidden" src="images/check-circle-white.svg" />
-        <h1>Tap your badge below to vote.</h1>
-      </div>
-      <div class="back">
-        <img src="images/loader.svg" />
-      </div>
+    <div class="success-card hidden">
+      <h2 id="message">Thanks for the vote</h2>
+      <h1 id="name">Katy D'Amico</h1>
+      <h2>-Anthony, Bo,<br />Andi and Kevin
     </div>
-    <script>window.$ = window.jQuery = require('jquery');</script>
+    <div class="main-card">
+      <h1>Scan your badge to vote for this finalist</h1>
+      <img class="arrow-down" src="images/arrow-down.svg" />
+    </div>
+    <div class="loading-card hidden">
+      <img src="images/loader.svg" />
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+      crossorigin="anonymous"></script>
+    <!-- <script>window.$ = window.jQuery = require('jquery');</script> -->
     <script src="index.js"></script>
   </body>
 </html>

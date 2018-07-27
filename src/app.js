@@ -1,9 +1,11 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
 const { NFC } = require('nfc-pcsc');
 const path = require('path');
+var http = require("http");
 
 let win;
-let url = "";
+var url = "";
+var port = 80;
 const nfc = new NFC();
 
 function createWindow () {
@@ -29,59 +31,81 @@ app.on('window-all-closed', () => {
 ipcMain.on('updateUrl', (event, arg) => {
     url = arg;
 });
+ipcMain.on('updatePort', (event, arg) => {
+    port = arg;
+});
 
 
 nfc.on('reader', reader => {
 
-    console.log(`${reader.reader.name}  device attached`);
+  console.log(`${reader.reader.name}  device attached`);
 
-    // needed for reading tags emulated with Android HCE
-    // custom AID, change according to your Android for tag emulation
-    // see https://developer.android.com/guide/topics/connectivity/nfc/hce.html
-    reader.aid = 'F222222222';
+  reader.on('card', async card => {
+    try {
+      console.log(`${reader.reader.name}  card detected`, card);
+      const data = await reader.read(0, 128);
+      console.log("data read", data);
 
-    reader.on('card', async card => {
+      const payload = data.toString();
+      console.log("data converted", payload);
 
-        // card is object containing following data
-        // [always] String type: TAG_ISO_14443_3 (standard nfc tags like Mifare) or TAG_ISO_14443_4 (Android HCE and others)
-        // [always] String standard: same as type
-        // [only TAG_ISO_14443_3] String uid: tag uid
-        // [only TAG_ISO_14443_4] Buffer data: raw data from select APDU response
-        try {
-          console.log(`${reader.reader.name}  card detected`, card);
-          const data = await reader.read(0, 128);
-          console.log("data read", data);
+      var rawData = payload.split(String.fromCharCode(30))[1]
+      var userData= rawData.split(String.fromCharCode(31)).filter(a=>a!="");
+      console.log(userData);
 
-          const payload = data.toString();
-          console.log("data converted", payload);
+      var badgeId = userData[0]
+      var firstName = userData[1]
+      var lastName = userData[2]
 
-          var rawData = payload.split(String.fromCharCode(30))[1]
-          var userData= rawData.split(String.fromCharCode(31)).filter(a=>a!="");
-          console.log(userData);
+      win.webContents.send('badge-loading', {firstName: firstName, lastName: lastName})
+      sendRequest(badgeid);
 
-          var badgeId = userData[0]
-          var firstName = userData[1]
-          var lastName = userData[2]
+    } catch (err) {
+      console.error("error reading data", error);
+    }
+  });
 
-        } catch (err) {
-          console.error("error reading data", error);
-        }
-    });
+  reader.on('card.off', card => {
+      console.log(`${reader.reader.name}  card removed`, card);
+  });
 
-    reader.on('card.off', card => {
-        console.log(`${reader.reader.name}  card removed`, card);
-    });
+  reader.on('error', err => {
+      console.log(`${reader.reader.name}  an error occurred`, err);
+  });
 
-    reader.on('error', err => {
-        console.log(`${reader.reader.name}  an error occurred`, err);
-    });
-
-    reader.on('end', () => {
-        console.log(`${reader.reader.name}  device removed`);
-    });
+  reader.on('end', () => {
+      console.log(`${reader.reader.name}  device removed`);
+  });
 
 });
 
 nfc.on('error', err => {
     console.log('an error occurred', err);
 });
+
+var sendRequest = function(badgeid){
+  var options = {
+    hostname: url,
+    port: port,
+    path: '/vote?badge_id='+badgeid,
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    }
+  };
+  var req = http.request(options, function(res) {
+    console.log('Status: ' + res.statusCode);
+    console.log('Headers: ' + JSON.stringify(res.headers));
+    res.setEncoding('utf8');
+    res.on('data', function (body) {
+      win.webContents.send('badge-success', {body: body, status: res.statusCode})
+      console.log('Body: ' + body);
+    });
+  });
+  req.on('error', function(e) {
+    console.log('problem with request: ' + e.message);
+  });
+  // write data to request body
+  req.write('{"string": "Hello, World"}');
+  req.end();
+}
