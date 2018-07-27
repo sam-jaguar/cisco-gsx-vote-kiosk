@@ -5,7 +5,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: default;
+  cursor: none;
   box-sizing: border-box;
 }
 
@@ -76,6 +76,7 @@ h1{
   transition: transform 0.2s ease;
   font-size: 16px;
   z-index: 100;
+  cursor: default !important;
 }
 
 .slid {
@@ -86,12 +87,14 @@ label {
   padding: 0.5em;
   color: white;
   margin-bottom: 0.5em;
+  cursor: default !important;
 }
 
 input {
   padding: 0.5em;
   border-radius: 3px;
   border: none;
+  cursor: default !important;
 }
 
 .hidden {
