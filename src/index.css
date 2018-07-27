@@ -48,7 +48,7 @@ html, body {
   padding: 0;
 }
 
-.card {
+.main-card, .loading-card {
   position: fixed;
   width: 100%;
   top: 50%;

@@ -48,6 +48,14 @@ ipcRenderer.on('badge-success', function(event, data){
   }, 4000);
 });
 
+ipcRenderer.on('badge-error', function(event, data){
+  console.log("recieved badge-error: "+data);
+  $(".main-card").removeClass("hidden");
+  $(".loading-card").addClass("hidden");
+  $(".success-card").addClass("hidden");
+  console.log(data);
+});
+
 var capitalize =  function(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

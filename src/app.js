@@ -98,7 +98,11 @@ var sendRequest = function(badgeid){
     console.log('Headers: ' + JSON.stringify(res.headers));
     res.setEncoding('utf8');
     res.on('data', function (body) {
-      win.webContents.send('badge-success', {body: body, status: res.statusCode})
+      if(res.statusCode == 200 || res.statusCode == 409){
+        win.webContents.send('badge-success', {body: body, status: res.statusCode});
+      }else{
+        win.webContents.send('badge-error', {body: body, status: res.statusCode})
+      }
       console.log('Body: ' + body);
     });
   });
