@@ -84,6 +84,10 @@ nfc.on('error', err => {
 });
 
 var sendRequest = function(badgeid){
+  var username = 'user';
+  var password = 'secret';
+  var auth = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
+
   var options = {
     hostname: url,
     port: port,
@@ -91,6 +95,7 @@ var sendRequest = function(badgeid){
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
+        'Authorization': auth
     }
   };
   var req = http.request(options, function(res) {
