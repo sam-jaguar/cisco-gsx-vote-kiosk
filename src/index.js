@@ -26,6 +26,7 @@ $("#requestPort").on('change input', function(){
 });
 
 ipcRenderer.on('badge-loading', function(event, data){
+  console.log("recieved badge-loading: "+data);
   $(".main-card").addClass("hidden");
   $(".loading-card").removeClass("hidden");
   $(".success-card").addClass("hidden");
@@ -35,6 +36,7 @@ ipcRenderer.on('badge-loading', function(event, data){
 });
 
 ipcRenderer.on('badge-success', function(event, data){
+  console.log("recieved badge-success: "+data);
   $(".main-card").addClass("hidden");
   $(".loading-card").addClass("hidden");
   $(".success-card").removeClass("hidden");

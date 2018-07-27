@@ -61,7 +61,7 @@ nfc.on('reader', reader => {
       sendRequest(badgeid);
 
     } catch (err) {
-      console.error("error reading data", error);
+      console.error("error reading data", err);
     }
   });
 
