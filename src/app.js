@@ -11,12 +11,12 @@ const nfc = new NFC();
 
 function createWindow () {
   win = new BrowserWindow({width: 337, height: 233,
-    fullscreen: false
+    fullscreen: true
   })
 
   win.loadFile('src/index.html');
   win.setMenu(null);
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 
   win.on('closed', () => {
     win = null
