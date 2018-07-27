@@ -4,6 +4,22 @@ $(document).on('keydown', function( event ) {
   if ( event.which == 192 ) {
      $("#menu").toggleClass("slid");
   }
+
+  if ( event.which == 84 ) {
+    $(".main-card").addClass("hidden");
+    $(".loading-card").removeClass("hidden");
+    $(".success-card").addClass("hidden");
+    setTimeout(function () {
+      $(".main-card").addClass("hidden");
+          $(".loading-card").addClass("hidden");
+          $(".success-card").removeClass("hidden");
+      setTimeout(function () {
+        $(".main-card").removeClass("hidden");
+        $(".loading-card").addClass("hidden");
+        $(".success-card").addClass("hidden");
+      }, 4000);
+    }, 2000);
+  }
 });
 
 $("#requestUrl").on('change input', function(){
