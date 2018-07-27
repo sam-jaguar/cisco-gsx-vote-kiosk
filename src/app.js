@@ -58,7 +58,7 @@ nfc.on('reader', reader => {
       var lastName = userData[2]
 
       win.webContents.send('badge-loading', {firstName: firstName, lastName: lastName})
-      sendRequest(badgeid);
+      sendRequest(badgeId);
 
     } catch (err) {
       console.error("error reading data", err);
