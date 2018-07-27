@@ -118,8 +118,7 @@ var sendRequest = function(badgeid){
   });
   req.on('error', function(e) {
     console.log('problem with request: ' + e.message);
+    win.webContents.send('badge-error', {body: body, status: res.statusCode});
   });
-  // write data to request body
-  req.write('{"string": "Hello, World"}');
   req.end();
 }
