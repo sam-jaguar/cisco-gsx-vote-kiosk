@@ -103,7 +103,7 @@ var sendRequest = function(badgeid){
         'Authorization': auth
     }
   };
-  var req = http.request(options, function(res) {
+  var req = https.request(options, function(res) {
     console.log('Status: ' + res.statusCode);
     console.log('Headers: ' + JSON.stringify(res.headers));
     res.setEncoding('utf8');
