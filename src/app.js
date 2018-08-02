@@ -6,7 +6,6 @@ var https = require("https");
 
 let win;
 var url = "";
-var port = 80;
 var candidateId = "";
 const nfc = new NFC();
 
@@ -17,7 +16,7 @@ function createWindow () {
 
   win.loadFile('src/index.html');
   win.setMenu(null);
-  win.openDevTools();
+
   // win.webContents.openDevTools();
 
   win.on('closed', () => {
@@ -33,9 +32,6 @@ app.on('window-all-closed', () => {
 
 ipcMain.on('updateUrl', (event, arg) => {
     url = arg;
-});
-ipcMain.on('updatePort', (event, arg) => {
-    port = arg;
 });
 ipcMain.on('updateCandidateId', (event, arg) => {
     candidateId = arg;
