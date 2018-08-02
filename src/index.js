@@ -19,7 +19,7 @@ $(document).on('keydown', function( event ) {
   //       $(".success-card").addClass("hidden");
   //     }, 4000);
   //   }, 2000);
-  }
+  // }
 });
 
 $("#requestUrl").on('change input', function(){
