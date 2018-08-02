@@ -96,7 +96,7 @@ var sendRequest = function(badgeid){
 
   var options = {
     hostname: url,
-    port: port,
+
     path: "/vote/"+candidateId+"?badge_id="+badgeid,
     method: 'POST',
     headers: {
