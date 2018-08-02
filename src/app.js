@@ -2,6 +2,7 @@ const {app, BrowserWindow, ipcMain} = require('electron');
 const { NFC } = require('nfc-pcsc');
 const path = require('path');
 var http = require("http");
+var https = require("https");
 
 let win;
 var url = "";
