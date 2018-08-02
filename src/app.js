@@ -51,11 +51,13 @@ nfc.on('reader', reader => {
       const payload = data.toString();
       console.log("data converted", payload);
 
+      var rawFirstData = payload.split(String.fromCharCode(30))[0]
       var rawData = payload.split(String.fromCharCode(30))[1]
       var userData= rawData.split(String.fromCharCode(31)).filter(a=>a!="");
       console.log(userData);
+      var preData = rawFirstData.split("@");
 
-      var badgeId = userData[0]
+      var badgeId = preData[preData.length-1];
       var firstName = userData[1]
       var lastName = userData[2]
 
