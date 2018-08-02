@@ -46,7 +46,8 @@ ipcRenderer.on('badge-loading', function(event, data){
 
 ipcRenderer.on('badge-success', function(event, data){
   console.log("recieved badge-success: "+data);
-  var newData = JSON.parse(data)
+  console.log(data);
+  var newData = JSON.parse(data.body);
   $(".main-card").addClass("hidden");
   $(".loading-card").addClass("hidden");
   $("#team").text("-"+newData["team"]);
